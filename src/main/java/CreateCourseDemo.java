@@ -16,14 +16,16 @@ public class CreateCourseDemo {
 
         Course bcourse = new Course("java for beginners");
         Course icourse = new Course("java for interm");
-        int userId = 2;
 
 
         try {
             session.beginTransaction();
-            Instructor tempInstructor = session.get(Instructor.class, userId);
-            tempInstructor.add(bcourse);
-            tempInstructor.add(icourse);
+            Instructor tempInstructor = (Instructor) session
+                    .createQuery("from Instructor where email = :email")
+                    .setParameter("email", CreateInstructorDemo.INSTRUCTOR_MAIL)
+                    .uniqueResult();
+            tempInstructor.addCourse(bcourse);
+            tempInstructor.addCourse(icourse);
             session.persist(tempInstructor);
             session.getTransaction().commit();
         } finally {

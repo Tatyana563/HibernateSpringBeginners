@@ -10,8 +10,10 @@ public class Course {
     @Column(name="title")
     private String title;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "instructor_id")
+    @ManyToOne
+    @JoinTable(name = "instructor__courses",
+            joinColumns = @JoinColumn(name = "instructor_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Instructor instructor;
 
     public int getId() {

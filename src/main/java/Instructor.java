@@ -17,21 +17,23 @@ public class Instructor {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "instructor")
+    @OneToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "instructor__courses",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "instructor_id"))
     List<Course> courses;
 
-    public void add(Course tempCourse) {
+    public void addCourse(Course tempCourse) {
         if (courses == null) {
             courses = new ArrayList<>();
         }
-        tempCourse.setInstructor(this);
         courses.add(tempCourse);
 
     }

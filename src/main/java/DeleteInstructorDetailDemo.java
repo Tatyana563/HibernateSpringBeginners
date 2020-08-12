@@ -2,6 +2,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 
 public class DeleteInstructorDetailDemo {
     public static void main(String[] args) {
@@ -17,9 +19,10 @@ public class DeleteInstructorDetailDemo {
 
         try {
             session.beginTransaction();
-            int detailId = 2;
-            InstructorDetail detail = session.get(InstructorDetail.class, detailId);
-
+            InstructorDetail detail = (InstructorDetail) session
+                    .createQuery("from InstructorDetail where instructor.email = :email")
+                    .setParameter("email", CreateInstructorDemo.INSTRUCTOR_MAIL)
+                    .uniqueResult();
             session.delete(detail);
             session.getTransaction().commit();
         } finally {

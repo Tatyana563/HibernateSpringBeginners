@@ -4,6 +4,8 @@ import org.hibernate.cfg.Configuration;
 
 
 public class CreateInstructorDemo {
+    public static final String INSTRUCTOR_MAIL = "tom@gmail.com";
+
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -14,7 +16,7 @@ public class CreateInstructorDemo {
 
         Session session = factory.getCurrentSession();
 
-        Instructor newInstructor = new Instructor("Tom", "Green", "tom@gmail.com");
+        Instructor newInstructor = new Instructor("Tom", "Green", INSTRUCTOR_MAIL);
         InstructorDetail newDetails = new InstructorDetail("javacourse","sport");
         newInstructor.setInstructorDetail(newDetails);
 
