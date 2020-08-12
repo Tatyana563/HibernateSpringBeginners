@@ -24,8 +24,8 @@ public class CreateCourseDemo {
                     .createQuery("from Instructor where email = :email")
                     .setParameter("email", CreateInstructorDemo.INSTRUCTOR_MAIL)
                     .uniqueResult();
-            tempInstructor.getCourses().add(bcourse);
-            tempInstructor.getCourses().add(icourse);
+            tempInstructor.add(bcourse);
+            tempInstructor.add(icourse);
             session.persist(tempInstructor);
             session.getTransaction().commit();
         } finally {
