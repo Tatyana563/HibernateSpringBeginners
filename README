@@ -1,0 +1,4 @@
+1) When you delete InstructorDetails, Instructor is also deleted but Courses are not deleted.
+First implementation - join column, second join_table;
+2) Change password, user and db in hibernate.cfg.xml
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property> - chack the version of MySql server and change dialect;
