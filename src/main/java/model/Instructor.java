@@ -1,5 +1,8 @@
+package model;
+
+import model.InstructorDetail;
+
 import javax.persistence.*;
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +29,8 @@ public class Instructor {
 
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(name = "instructor__courses",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "instructor_id"))
+            joinColumns = @JoinColumn(name = "instructor_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
     List<Course> courses;
 
     public void addCourse(Course tempCourse) {

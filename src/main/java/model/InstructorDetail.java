@@ -1,3 +1,5 @@
+package model;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,10 +10,10 @@ public class InstructorDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="youtube_channel")
+    @Column(name = "youtube_channel")
     private String channel;
 
-    @Column(name="hobby")
+    @Column(name = "hobby")
     private String hobby;
 
     @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.ALL})

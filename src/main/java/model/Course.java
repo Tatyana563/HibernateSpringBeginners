@@ -1,3 +1,7 @@
+package model;
+
+import model.Instructor;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +16,8 @@ public class Course {
 
     @ManyToOne
     @JoinTable(name = "instructor__courses",
-            joinColumns = @JoinColumn(name = "instructor_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "instructor_id"))
     private Instructor instructor;
 
     public int getId() {

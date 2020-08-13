@@ -1,3 +1,8 @@
+package service;
+
+import model.Course;
+import model.Instructor;
+import model.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,15 +22,14 @@ public class CreateInstructorDemo {
         Session session = factory.getCurrentSession();
 
         Instructor newInstructor = new Instructor("Tom", "Green", INSTRUCTOR_MAIL);
-        InstructorDetail newDetails = new InstructorDetail("javacourse","sport");
+        InstructorDetail newDetails = new InstructorDetail("javacourse", "sport");
         newInstructor.setInstructorDetail(newDetails);
 
-        try{
+        try {
             session.beginTransaction();
             session.persist(newInstructor);
             session.getTransaction().commit();
-        }
-       finally{
+        } finally {
             session.close();
             factory.close();
         }

@@ -1,6 +1,12 @@
+package service;
+
+import model.Course;
+import model.Instructor;
+import model.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import service.CreateInstructorDemo;
 
 import java.util.List;
 
